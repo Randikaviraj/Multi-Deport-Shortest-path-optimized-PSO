@@ -1,4 +1,4 @@
-from ast import For
+from py_source.graph import *
 from cmath import sqrt
 import math
 
@@ -33,6 +33,16 @@ def clustering(demand_points,deports):
     return return_dic
 
 
+def create_cluster_graph_list(cluster_dic):
+    graph_list=[]
+    for x in cluster_dic:
+        vertice_list=[x]
+        for ele in cluster_dic[x]:
+            if x!=ele:
+                vertice_list.append(ele)
+        
+        graph_list.append(Graph(len(vertice_list),vertice_list))
+    return graph_list
 
 
     
