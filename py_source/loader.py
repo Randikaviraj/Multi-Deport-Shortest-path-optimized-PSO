@@ -1,6 +1,7 @@
 from py_source.graph import *
 from cmath import sqrt
 import math
+import geopy.distance
 
 def location_loader(file_name):
     return_array=[]
@@ -21,10 +22,10 @@ def clustering(demand_points,deports):
 
 
     for demand_point in demand_points:
-        length=math.sqrt(math.pow(demand_point[1]-deports[0][1],2)+math.pow(demand_point[2]-deports[0][2],2))
+        length=geopy.distance.geodesic((demand_point[1], demand_point[2]),(deports[0][1], deports[0][2])).km
         key=deports[0]
         for i in range(len(deports)-1):
-            temp_length=math.sqrt(math.pow((demand_point[1]-deports[i+1][1]),2)+math.pow((demand_point[2]-deports[i+1][2]),2))
+            temp_length = geopy.distance.geodesic((demand_point[1],demand_point[2]),(deports[i+1][1],deports[i+1][2])).km
             if temp_length<length:
                 length=temp_length
                 key=deports[i+1]

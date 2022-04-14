@@ -1,4 +1,5 @@
 import random, sys, math
+import geopy.distance
 
 class Graph:
 
@@ -13,32 +14,31 @@ class Graph:
     def showGraph(self):
         print('Showing the graph:\n')
         for edge in self.edges:
-            print('%d linked in %d with cost %d' % (edge[0], edge[1], self.edges[edge]))
+            print('%d linked in %d with cost %f' % (edge[0], edge[1], self.edges[edge]))
     
     def __init__(self, amount_vertices,vertices_list):
         self.edges = {} 
         self.vertices = set() 
         self.amount_vertices = amount_vertices 
         self.vertices_list= vertices_list
-
+        self.path_list=[]
 
         for i in range(len(vertices_list)):
             self.vertices.add(i)
             for j in range(len(vertices_list)):
                 if i!=j:
-                    self.edges[(i, j)]=math.sqrt(math.pow(vertices_list[i][1]*10000-vertices_list[j][1]*10000,2)+math.pow(vertices_list[i][2]*10000-vertices_list[j][2]*10000,2))
+                    self.edges[(i, j)]=geopy.distance.geodesic((vertices_list[i][1],vertices_list[i][2]),(vertices_list[j][1],vertices_list[j][2])).km
 
+    def path_town_print(self):
+        print("::::Towns::::")
+        for x in range(len(self.vertices_list)):
+            print(str(x)+" :"+str(self.vertices_list[x][0]))
 
-
-
-
-
-	# gets random unique paths - returns a list of lists of paths
     def getRandomPaths(self, max_size):
 
         random_paths, list_vertices = [], list(self.vertices)
 
-        initial_vertice = random.choice(list_vertices)
+        initial_vertice = 0
         if initial_vertice not in list_vertices:
             print('Error: initial vertice %d not exists!' % initial_vertice)
             sys.exit(1)
@@ -55,3 +55,4 @@ class Graph:
                 random_paths.append(list_temp)
 
         return random_paths
+        
