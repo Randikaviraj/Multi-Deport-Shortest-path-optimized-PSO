@@ -1,0 +1,67 @@
+def run(self):
+		# for each time step (iteration)
+		for t in range(self.iterations):
+
+			# updates gbest (best particle of the population)
+			self.gbest = min(self.particles, key=attrgetter('cost_pbest_solution'))
+
+			# for each particle in the swarm
+			for particle in self.particles:
+
+				particle.clearVelocity() # cleans the speed of the particle
+				temp_velocity = []
+				solution_gbest = copy.copy(self.gbest.getPBest()) # gets solution of the gbest
+				solution_pbest = particle.getPBest()[:] # copy of the pbest solution
+				solution_particle = particle.getCurrentSolution()[:] # gets copy of the current solution of the particle
+
+				# generates all swap operators to calculate (pbest - x(t-1))
+				for i in range(self.graph.amount_vertices):
+					if solution_particle[i] != solution_pbest[i]:
+						# generates swap operator
+						swap_operator = (i, solution_pbest.index(solution_particle[i]), self.alfa)
+
+						# append swap operator in the list of velocity
+						temp_velocity.append(swap_operator)
+
+						# makes the swap
+						aux = solution_pbest[swap_operator[0]]
+						solution_pbest[swap_operator[0]] = solution_pbest[swap_operator[1]]
+						solution_pbest[swap_operator[1]] = aux
+
+				# generates all swap operators to calculate (gbest - x(t-1))
+				for i in range(self.graph.amount_vertices):
+					if solution_particle[i] != solution_gbest[i]:
+						# generates swap operator
+						swap_operator = (i, solution_gbest.index(solution_particle[i]), self.beta)
+
+						# append swap operator in the list of velocity
+						temp_velocity.append(swap_operator)
+
+						# makes the swap
+						aux = solution_gbest[swap_operator[0]]
+						solution_gbest[swap_operator[0]] = solution_gbest[swap_operator[1]]
+						solution_gbest[swap_operator[1]] = aux
+
+				
+				# updates velocity
+				particle.setVelocity(temp_velocity)
+
+				# generates new solution for particle
+				for swap_operator in temp_velocity:
+					if random.random() <= swap_operator[2]:
+						# makes the swap
+						aux = solution_particle[swap_operator[0]]
+						solution_particle[swap_operator[0]] = solution_particle[swap_operator[1]]
+						solution_particle[swap_operator[1]] = aux
+				
+				# updates the current solution
+				particle.setCurrentSolution(solution_particle)
+				# gets cost of the current solution
+				cost_current_solution = self.graph.getCostPath(solution_particle)
+				# updates the cost of the current solution
+				particle.setCostCurrentSolution(cost_current_solution)
+
+				# checks if current solution is pbest solution
+				if cost_current_solution < particle.getCostPBest():
+					particle.setPBest(solution_particle)
+					particle.setCostPBest(cost_current_solution)

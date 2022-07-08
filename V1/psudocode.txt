@@ -1,0 +1,288 @@
+FUNCTION  location_loader(file_name):
+    RETURNS return_array
+    return_array=[] 
+    f<-open(file_name)
+    WHILE True DO
+        line<-f.readline()
+        IF not line
+            THEN
+            break  
+        ENDIF
+        split_list<-line.split(",")
+        tuf=(split_list[0],float(split_list[1]),float(split_list[2]))
+        return_array.append(tuf)
+    ENDWHILE
+    return return_array
+ENDFUNCTION
+
+
+
+
+FUNCTION  clustering(demand_points,deports):
+    RETURNS temp_dic
+    temp_dic<-dict()
+    FOR point in deports:  
+        temp_dic[point]=[]  
+
+    FOR demand_point in demand_points: 
+        length<-geopy.distance.geodesic((demand_point[1], demand_point[2]),(deports[0][1], deports[0][2])).km
+        key<-deports[0]
+        FOR i 0 TO len(deports)-1
+            temp_length<-geopy.distance.geodesic((demand_point[1],demand_point[2]),(deports[i+1][1],deports[i+1][2])).km
+            IF temp_length<length
+                THEN
+                length<-temp_length
+                key<-deports[i+1]
+            ENDIF
+        NEXT
+        temp_dic[key].append(demand_point)
+    return temp_dic
+ENDFUNCTION
+
+
+FUNCTION  create_cluster_graph_list(cluster_dic):
+    RETURNS graph_list
+    graph_list=[]  
+    FOR x in cluster_dic:  
+        vertice_list=[x]  
+        FOR ele in cluster_dic[x]:  
+            IF x!=ele
+                THEN
+                vertice_list.append(ele)
+            ENDIF
+        
+        graph_list.append(Graph(len(vertice_list),vertice_list))
+    return graph_list
+ENDFUNCTION
+
+
+FUNCTION  getCostPath(self, path):
+        RETURNS total_cost
+        total_cost<-0
+        FOR i 0 TO self.amount_vertices - 1
+            total_cost += self.edges[(path[i], path[i+1])]
+        NEXT
+        // add cost of the last edge
+        total_cost += self.edges[(path[self.amount_vertices - 1], path[0])]
+        return total_cost
+ENDFUNCTION
+
+
+FUNCTION  showGraph(self):
+    OUTPUT 'Showing the graph:\n'
+    FOR edge in self.edges:  
+        OUTPUT '%d linked in %d with cost %f' % (edge[0], edge[1], self.edges[edge]
+ENDFUNCTION
+
+
+FUNCTION  __init__(self, amount_vertices,vertices_list):
+        self.edges<-{} 
+        self.vertices<-set() 
+        self.amount_vertices<-amount_vertices 
+        self.vertices_list= vertices_list
+        self.path_list=[]  //Possible array.
+
+        FOR i in range(len(vertices_list)):
+            self.vertices.add(i)
+            FOR j in range(len(vertices_list)):
+                IF i!=j
+                    THEN
+                    self.edges[(i, j)]=geopy.distance.geodesic((vertices_list[i][1],vertices_list[i][2]),(vertices_list[j][1],vertices_list[j][2])).km
+                ENDIF
+ENDFUNCTION
+
+
+FUNCTION  getRandomPaths(self, max_size):
+    RETURNS random_paths
+        random_paths, list_vertices<-[], list(self.vertices)
+
+        initial_vertice<-0
+        IF initial_vertice not in list_vertices
+            THEN
+            OUTPUT 'Error: initial vertice %d not exists!' % initial_vertice
+            sys.exit(1)
+        ENDIF
+
+        list_vertices.remove(initial_vertice)
+        list_vertices.insert(0, initial_vertice)
+
+        FOR i in range(max_size):
+            list_temp<-list_vertices[1:]
+            random.shuffle(list_temp)
+            list_temp.insert(0, initial_vertice)
+
+            IF list_temp not in random_paths
+                THEN
+                random_paths.append(list_temp)
+            ENDIF
+
+        return random_paths
+ENDFUNCTION
+
+FUNCTION  setPBest(self, new_pbest):
+RETURNS 
+	self.pbest<-new_pbest
+ENDFUNCTION
+
+
+// returns the pbest
+FUNCTION  getPBest(self):
+RETURNS self.pbest
+	return self.pbest
+ENDFUNCTION
+
+// set the new velocity (sequence of swap operators)
+FUNCTION  setVelocity(self, new_velocity):
+RETURNS 
+	self.velocity<-new_velocity
+ENDFUNCTION
+
+// returns the velocity (sequence of swap operators)
+FUNCTION  getVelocity(self):
+RETURNS 
+	return self.velocity
+ENDFUNCTION
+
+// set solution
+FUNCTION  setCurrentSolution(self, solution):
+RETURNS 
+	self.solution<-solution
+ENDFUNCTION
+
+// gets solution
+FUNCTION  getCurrentSolution(self):
+RETURNS
+	return self.solution
+ENDFUNCTION
+
+// set cost pbest solution
+FUNCTION  setCostPBest(self, cost):
+RETURNS 
+	self.cost_pbest_solution<-cost
+ENDFUNCTION
+
+// gets cost pbest solution
+FUNCTION  getCostPBest(self):
+RETURNS 
+	return self.cost_pbest_solution
+ENDFUNCTION
+
+// set cost current solution
+FUNCTION  setCostCurrentSolution(self, cost):
+RETURNS 
+	self.cost_current_solution<-cost
+ENDFUNCTION
+
+// gets cost current solution
+FUNCTION  getCostCurrentSolution(self):
+RETURNS 
+	return self.cost_current_solution
+ENDFUNCTION
+
+// removes all elements of the list velocity
+FUNCTION  clearVelocity(self):
+RETURNS 
+	del self.velocity[:]
+ENDFUNCTION
+
+
+
+// set gbest (best particle of the population)
+FUNCTION  setGBest(self, new_gbest):
+RETURNS 
+	self.gbest<-new_gbest
+ENDFUNCTION
+
+// returns gbest (best particle of the population)
+FUNCTION  getGBest(self):
+RETURNS self.gbest
+	return self.gbest
+ENDFUNCTION
+
+
+// shows the info of the particles
+FUNCTION  showsParticles(self):
+RETURNS 
+	OUTPUT 'Showing particles...\n'
+	FOR particle in self.particles:  //Pseudocode can't handle this
+	    OUTPUT 'pbest: %s\t|\tcost pbest: %f\t|\tcurrent solution: %s\t|\tcost current solution: %f' \
+				% (str(particle.getPBest()), particle.getCostPBest(), str(particle.getCurrentSolution()),
+							particle.getCostCurrentSolution()))
+	OUTPUT ''
+ENDFUNCTION
+
+
+FUNCTION  run(self):
+RETURNS 
+		// FOR each time step (iteration)  
+		FOR t in range(self.iterations):
+
+			// updates gbest (best particle of the population)
+			self.gbest<-min(self.particles, key=attrgetter('cost_pbest_solution'))
+
+			// FOR each particle in the swarm  
+			FOR particle in self.particles: 
+
+				particle.clearVelocity() // cleans the speed of the particle
+				temp_velocity<-[]
+				solution_gbest<-copy.copy(self.gbest.getPBest()) // gets solution of the gbest
+				solution_pbest<-particle.getPBest()[:] // copy of the pbest solution
+				solution_particle<-particle.getCurrentSolution()[:] // gets copy of the current solution of the particle
+
+				// generates all swap operators to calculate (pbest - x(t-1))
+				FOR i in range(self.graph.amount_vertices):
+					IF solution_particle[i] != solution_pbest[i]
+                    THEN
+						// generates swap operator
+						swap_operator<-(i, solution_pbest.index(solution_particle[i]), self.alfa)
+
+						// append swap operator in the list of velocity
+						temp_velocity.append(swap_operator)
+
+						// makes the swap
+						aux<-solution_pbest[swap_operator[0]]
+						solution_pbest[swap_operator[0]]<-solution_pbest[swap_operator[1]]
+						solution_pbest[swap_operator[1]]<-aux
+                    ENDIF
+				// generates all swap operators to calculate (gbest - x(t-1))
+				FOR i in range(self.graph.amount_vertices):
+					IF solution_particle[i] != solution_gbest[i]
+                    THEN
+						// generates swap operator
+						swap_operator<-(i, solution_gbest.index(solution_particle[i]), self.beta)
+
+						// append swap operator in the list of velocity
+						temp_velocity.append(swap_operator)
+
+						// makes the swap
+						aux<-solution_gbest[swap_operator[0]]
+						solution_gbest[swap_operator[0]]<-solution_gbest[swap_operator[1]]
+						solution_gbest[swap_operator[1]]<-aux
+                    ENDIF
+				// updates velocity
+				particle.setVelocity(temp_velocity)
+
+				// generates new solution FOR particle  //Pseudocode can't handle this
+				FOR swap_operator in temp_velocity:  //Pseudocode can't handle this
+					IF random.random() <= swap_operator[2]
+                    THEN
+						// makes the swap
+						aux<-solution_particle[swap_operator[0]]
+						solution_particle[swap_operator[0]]<-solution_particle[swap_operator[1]]
+						solution_particle[swap_operator[1]]<-aux
+                    ENDIF
+				// updates the current solution
+				particle.setCurrentSolution(solution_particle)
+				// gets cost of the current solution
+				cost_current_solution<-self.graph.getCostPath(solution_particle)
+				// updates the cost of the current solution
+				particle.setCostCurrentSolution(cost_current_solution)
+
+				// checks IF current solution is pbest solution
+
+				IF cost_current_solution < particle.getCostPBest()
+                THEN
+					particle.setPBest(solution_particle)
+					particle.setCostPBest(cost_current_solution)
+                ENDIF
+ENDFUNCTION	

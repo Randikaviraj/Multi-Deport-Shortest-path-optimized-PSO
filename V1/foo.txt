@@ -1,0 +1,251 @@
+================================================================================
+Cluster : 0
+
+::::Towns::::
+0 :Dehiwala
+1 :Nugegoda
+2 :Boralasgamuwa
+3 :Wellawatta
+
+Showing the graph:
+
+0 linked in 1 with cost 4.355135
+0 linked in 2 with cost 5.060168
+0 linked in 3 with cost 4.531193
+1 linked in 0 with cost 4.355135
+1 linked in 2 with cost 3.845708
+1 linked in 3 with cost 1.385733
+2 linked in 0 with cost 5.060168
+2 linked in 1 with cost 3.845708
+2 linked in 3 with cost 5.192943
+3 linked in 0 with cost 4.531193
+3 linked in 1 with cost 1.385733
+3 linked in 2 with cost 5.192943
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 2, 1, 3]	|	cost pbest: 14.822803	|	current solution: [0, 2, 1, 3]	|	cost current solution: 14.822803
+pbest: [0, 1, 2, 3]	|	cost pbest: 17.924979	|	current solution: [0, 1, 2, 3]	|	cost current solution: 17.924979
+pbest: [0, 3, 2, 1]	|	cost pbest: 17.924979	|	current solution: [0, 3, 2, 1]	|	cost current solution: 17.924979
+pbest: [0, 1, 3, 2]	|	cost pbest: 15.993979	|	current solution: [0, 1, 3, 2]	|	cost current solution: 15.993979
+pbest: [0, 3, 1, 2]	|	cost pbest: 14.822803	|	current solution: [0, 3, 1, 2]	|	cost current solution: 14.822803
+pbest: [0, 2, 3, 1]	|	cost pbest: 15.993979	|	current solution: [0, 2, 3, 1]	|	cost current solution: 15.993979
+
+---------------particles-----------------------------------
+gbest: [0, 3, 1, 2] | cost: 14.822803
+
+================================================================================
+================================================================================
+Cluster : 2
+
+::::Towns::::
+0 :Homagama
+1 :Kottawa
+
+Showing the graph:
+
+0 linked in 1 with cost 2.916442
+1 linked in 0 with cost 2.916442
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1]	|	cost pbest: 5.832883	|	current solution: [0, 1]	|	cost current solution: 5.832883
+
+---------------particles-----------------------------------
+gbest: [0, 1] | cost: 5.832883
+
+================================================================================
+================================================================================
+Cluster : 3
+
+::::Towns::::
+0 :Malabe
+1 :Kaduwela
+
+Showing the graph:
+
+0 linked in 1 with cost 3.991544
+1 linked in 0 with cost 3.991544
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1]	|	cost pbest: 7.983088	|	current solution: [0, 1]	|	cost current solution: 7.983088
+
+---------------particles-----------------------------------
+gbest: [0, 1] | cost: 7.983088
+
+================================================================================
+================================================================================
+Cluster : 4
+
+::::Towns::::
+0 :Piliyandala
+1 :Panadura
+2 :Maharagam
+
+Showing the graph:
+
+0 linked in 1 with cost 6.739297
+0 linked in 2 with cost 6.732777
+1 linked in 0 with cost 6.739297
+1 linked in 2 with cost 13.471965
+2 linked in 0 with cost 6.732777
+2 linked in 1 with cost 13.471965
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1, 2]	|	cost pbest: 26.944039	|	current solution: [0, 1, 2]	|	cost current solution: 26.944039
+pbest: [0, 2, 1]	|	cost pbest: 26.944039	|	current solution: [0, 2, 1]	|	cost current solution: 26.944039
+
+---------------particles-----------------------------------
+gbest: [0, 2, 1] | cost: 26.944039
+
+================================================================================
+================================================================================
+Cluster : 5
+
+::::Towns::::
+0 :Yakkala
+1 :Mirigama
+2 :Weliweriya
+
+Showing the graph:
+
+0 linked in 1 with cost 20.645705
+0 linked in 2 with cost 0.576526
+1 linked in 0 with cost 20.645705
+1 linked in 2 with cost 21.167730
+2 linked in 0 with cost 0.576526
+2 linked in 1 with cost 21.167730
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 2, 1]	|	cost pbest: 42.389962	|	current solution: [0, 2, 1]	|	cost current solution: 42.389962
+pbest: [0, 1, 2]	|	cost pbest: 42.389962	|	current solution: [0, 1, 2]	|	cost current solution: 42.389962
+
+---------------particles-----------------------------------
+gbest: [0, 2, 1] | cost: 42.389962
+
+================================================================================
+================================================================================
+Cluster : 6
+
+::::Towns::::
+0 :Gampaha
+1 :JaEla
+
+Showing the graph:
+
+0 linked in 1 with cost 12.497781
+1 linked in 0 with cost 12.497781
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1]	|	cost pbest: 24.995561	|	current solution: [0, 1]	|	cost current solution: 24.995561
+
+---------------particles-----------------------------------
+gbest: [0, 1] | cost: 24.995561
+
+================================================================================
+================================================================================
+Cluster : 7
+
+::::Towns::::
+0 :Angoda
+1 :Battaramulla
+2 :Mardana
+3 :Wattala
+4 :Kelaniya
+5 :Ragama
+6 :Paliyagoda
+
+Showing the graph:
+
+0 linked in 1 with cost 3.960263
+0 linked in 2 with cost 6.193517
+0 linked in 3 with cost 7.071798
+0 linked in 4 with cost 2.490705
+0 linked in 5 with cost 10.783292
+0 linked in 6 with cost 2.407262
+1 linked in 0 with cost 3.960263
+1 linked in 2 with cost 5.541070
+1 linked in 3 with cost 10.067764
+1 linked in 4 with cost 6.361617
+1 linked in 5 with cost 14.609537
+1 linked in 6 with cost 6.149333
+2 linked in 0 with cost 6.193517
+2 linked in 1 with cost 5.541070
+2 linked in 3 with cost 7.449728
+2 linked in 4 with cost 7.020019
+2 linked in 5 with cost 13.417100
+2 linked in 6 with cost 6.540934
+3 linked in 0 with cost 7.071798
+3 linked in 1 with cost 10.067764
+3 linked in 2 with cost 7.449728
+3 linked in 4 with cost 5.095678
+3 linked in 5 with cost 6.194356
+3 linked in 6 with cost 4.867445
+4 linked in 0 with cost 2.490705
+4 linked in 1 with cost 6.361617
+4 linked in 2 with cost 7.020019
+4 linked in 3 with cost 5.095678
+4 linked in 5 with cost 8.294883
+4 linked in 6 with cost 0.494754
+5 linked in 0 with cost 10.783292
+5 linked in 1 with cost 14.609537
+5 linked in 2 with cost 13.417100
+5 linked in 3 with cost 6.194356
+5 linked in 4 with cost 8.294883
+5 linked in 6 with cost 8.462327
+6 linked in 0 with cost 2.407262
+6 linked in 1 with cost 6.149333
+6 linked in 2 with cost 6.540934
+6 linked in 3 with cost 4.867445
+6 linked in 4 with cost 0.494754
+6 linked in 5 with cost 8.462327
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1, 2, 4, 6, 3, 5]	|	cost pbest: 38.861197	|	current solution: [0, 1, 2, 4, 6, 3, 5]	|	cost current solution: 38.861197
+pbest: [0, 2, 6, 1, 4, 3, 5]	|	cost pbest: 47.318725	|	current solution: [0, 2, 6, 1, 4, 3, 5]	|	cost current solution: 47.318725
+pbest: [0, 5, 3, 1, 2, 4, 6]	|	cost pbest: 42.508516	|	current solution: [0, 5, 3, 1, 2, 4, 6]	|	cost current solution: 42.508516
+pbest: [0, 2, 1, 4, 5, 3, 6]	|	cost pbest: 39.860149	|	current solution: [0, 2, 1, 4, 5, 3, 6]	|	cost current solution: 39.860149
+pbest: [0, 3, 2, 1, 6, 5, 4]	|	cost pbest: 45.459843	|	current solution: [0, 3, 2, 1, 6, 5, 4]	|	cost current solution: 45.459843
+pbest: [0, 6, 3, 5, 1, 2, 4]	|	cost pbest: 43.130393	|	current solution: [0, 6, 3, 5, 1, 2, 4]	|	cost current solution: 43.130393
+pbest: [0, 1, 5, 4, 3, 2, 6]	|	cost pbest: 48.358284	|	current solution: [0, 1, 5, 4, 3, 2, 6]	|	cost current solution: 48.358284
+pbest: [0, 4, 2, 6, 3, 5, 1]	|	cost pbest: 45.683258	|	current solution: [0, 4, 2, 6, 3, 5, 1]	|	cost current solution: 45.683258
+pbest: [0, 4, 1, 5, 2, 6, 3]	|	cost pbest: 55.359135	|	current solution: [0, 4, 1, 5, 2, 6, 3]	|	cost current solution: 55.359135
+pbest: [0, 3, 2, 1, 5, 6, 4]	|	cost pbest: 46.119918	|	current solution: [0, 3, 2, 1, 5, 6, 4]	|	cost current solution: 46.119918
+
+---------------particles-----------------------------------
+gbest: [0, 1, 2, 4, 5, 3, 6] | cost: 38.285297
+
+================================================================================
+================================================================================
+Cluster : 8
+
+::::Towns::::
+0 :Negambo
+1 :Kochchikade
+
+Showing the graph:
+
+0 linked in 1 with cost 8.237077
+1 linked in 0 with cost 8.237077
+
+---------------particles-----------------------------------
+Showing particles...
+
+pbest: [0, 1]	|	cost pbest: 16.474154	|	current solution: [0, 1]	|	cost current solution: 16.474154
+
+---------------particles-----------------------------------
+gbest: [0, 1] | cost: 16.474154
+
+================================================================================

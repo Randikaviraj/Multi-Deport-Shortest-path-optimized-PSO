@@ -12,14 +12,20 @@ if __name__ == "__main__":
     for x in range(len(graph_list)):
         if graph_list[x].amount_vertices==1:
             continue
+        print("================================================================================")
+        print("Cluster : "+str(x))
+        print("")
         graph_list[x].path_town_print()
-        # graph_list[x].showGraph()
-        # print(graph_list[x].getRandomPaths(10))
+        print("")
+        graph_list[x].showGraph()
         pso = PSO(graph_list[x], iterations=100, size_population=10, beta=1, alfa=0.9)
-        # pso.showsParticles() # shows the particles
+        print("")
+        print("---------------particles-----------------------------------")
+        pso.showsParticles() # shows the particles
+        print("---------------particles-----------------------------------")
         pso.run() # runs the PSO algorithm
-
         # shows the global best particle
         print('gbest: %s | cost: %f\n' % (pso.getGBest().getPBest(), pso.getGBest().getCostPBest()))
+        print("================================================================================")
     
 
